@@ -1,0 +1,37 @@
+﻿<fw:AcrylicWindow x:Class="DeBetoverdeDoolhof.View.RulesModalWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DeBetoverdeDoolhof.View"
+        mc:Ignorable="d"
+        Title="RulesModalWindow" Height="450" Width="800">
+    <Grid Background="#005A9E" Margin="20">
+        <FlowDocumentReader>
+            <FlowDocument>
+                <Paragraph>
+                    <Bold>
+                        <Run>Voorbereiding</Run></Bold>
+                    <LineBreak/>
+                    <Run>
+                        In totaal zijn er 34 (vierkante) doolhofkaarten, schud deze allemaal goed door elkaar en leg deze vervolgens open neer op willekeurige (lege) plaatsen op het speelbord. Op deze manier ontstaat er een compleet gangenstelsel. Het is niet erg als sommige gangen doodlopen. Je zult zien dat er één doolhofkaart overblijft. Deze wordt straks gebruikt om het doolhof te laten bewegen.
+Het spel bevat 24 doelkaarten. Op deze kaarten staan prachtige voorwerpen en figuren afgebeeld die je moet proberen te vinden. Schud alle doelkaarten goed door elkaar en geef elke speler hetzelfde aantal kaarten tot deze opgedeeld zijn. Elke speler maakt nu een stapeltje van zijn/haar doelkaarten en legt deze gesloten voor zich neer. De afbeeldingen op de doelkaarten zijn nu voor niemand zichtbaar. Als laatste worden de gekleurde pionnen op de startposities in de hoeken van het speelbord geplaatst.
+                    </Run>
+                    
+
+                </Paragraph>
+
+                <Paragraph>
+                    <Bold>Het spelverloop</Bold>
+                    <LineBreak/>
+                    Nu de voorbereiding van het Doolhof is afgerond, kan het spel beginnen. De jongste speler mag als eerste, hierna wordt met de klok mee gespeeld. De eerste speler bekijkt de bovenste doelkaart die op zijn/haar stapel ligt en legt deze daarna gedekt voor zich. De afbeelding op de doelkaart bepaalt naar welke schat de speler als eerste moet navigeren.
+Om bij jouw doel te komen, zul je de overgebleven doolhofkaart ergens moeten inschuiven zodat je het gangenstelsel naar jouw hand kunt zetten. Met gele pijlen op het speelbord staat aangegeven op welke plaatsen je de doolhofkaart mag inschuiven. Deze keuze vergt enig ruimtelijk inzicht en geluk. Aan de andere kant van het speelbord wordt een doolhofkaart weer uitgeschoven. Deze kan weer gebruikt worden door de speler die als volgende aan zet is. Staat op de uitgeschoven kaart een spelstuk, dan wordt deze op de zojuist in-geschoven kaart geplaatst. Dit geldt echter niet als een zet.
+Nadat het gangenstelsel is verschoven, mag de speler die aan zet is de eigen pion verplaatsen óf kiezen om te blijven staan. Je mag de pion verplaatsen zo ver als de gangen doorlopen. Het is dus niet toegestaan om door muren heen te lopen. Probeer binnen één beurt zo dicht mogelijk in de buurt van jouw doel te komen. Kom je terecht op een reeds bezet vakje? Dan is er niets aan de hand en blijven alle pionnen hier staan. Als het spelstuk op het veld met de gezochte schat belandt, laat de speler zijn kaart met deze schat zien en legt deze kaart terzijde. Hij mag de bovenste kaart van zijn stapel bekijken. Dit is de volgende schat die hij moet vinden. Vervolgens gaat de beurt naar de volgende speler.
+Wie als eerste al zijn doelkaarten heeft ‘uitgespeeld’, moet de eigen pion weer veilig terugbrengen naar de startpositie. Is dit gelukt? Dan ben je de winnaar van het spel!
+
+                </Paragraph>
+            </FlowDocument>
+        </FlowDocumentReader>
+    </Grid>
+</fw:AcrylicWindow>
