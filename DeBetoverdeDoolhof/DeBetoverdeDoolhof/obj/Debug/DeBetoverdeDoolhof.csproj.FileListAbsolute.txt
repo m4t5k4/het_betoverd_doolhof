@@ -1,7 +1,6 @@
 D:\thomasmore\WPF\the amazing labyrinth\github\2021-WPF-ET-25\DeBetoverdeDoolhof\DeBetoverdeDoolhof\bin\Debug\DeBetoverdeDoolhof.exe.config
 D:\thomasmore\WPF\the amazing labyrinth\github\2021-WPF-ET-25\DeBetoverdeDoolhof\DeBetoverdeDoolhof\bin\Debug\DeBetoverdeDoolhof.exe
 D:\thomasmore\WPF\the amazing labyrinth\github\2021-WPF-ET-25\DeBetoverdeDoolhof\DeBetoverdeDoolhof\bin\Debug\DeBetoverdeDoolhof.pdb
-D:\thomasmore\WPF\the amazing labyrinth\github\2021-WPF-ET-25\DeBetoverdeDoolhof\DeBetoverdeDoolhof\obj\Debug\DeBetoverdeDoolhof.csprojAssemblyReference.cache
 D:\thomasmore\WPF\the amazing labyrinth\github\2021-WPF-ET-25\DeBetoverdeDoolhof\DeBetoverdeDoolhof\obj\Debug\App.g.cs
 D:\thomasmore\WPF\the amazing labyrinth\github\2021-WPF-ET-25\DeBetoverdeDoolhof\DeBetoverdeDoolhof\obj\Debug\DeBetoverdeDoolhof_MarkupCompile.cache
 D:\thomasmore\WPF\the amazing labyrinth\github\2021-WPF-ET-25\DeBetoverdeDoolhof\DeBetoverdeDoolhof\obj\Debug\DeBetoverdeDoolhof_MarkupCompile.lref
@@ -22,3 +21,9 @@ D:\thomasmore\WPF\the amazing labyrinth\github\2021-WPF-ET-25\DeBetoverdeDoolhof
 D:\thomasmore\WPF\the amazing labyrinth\github\2021-WPF-ET-25\DeBetoverdeDoolhof\DeBetoverdeDoolhof\obj\Debug\View\PlayersModalWindow.baml
 D:\thomasmore\WPF\the amazing labyrinth\github\2021-WPF-ET-25\DeBetoverdeDoolhof\DeBetoverdeDoolhof\obj\Debug\View\RulesModalWindow.baml
 D:\thomasmore\WPF\the amazing labyrinth\github\2021-WPF-ET-25\DeBetoverdeDoolhof\DeBetoverdeDoolhof\obj\Debug\View\TreasuresModalWindow.baml
+D:\thomasmore\WPF\the amazing labyrinth\github\2021-WPF-ET-25\DeBetoverdeDoolhof\DeBetoverdeDoolhof\bin\Debug\Dapper.Contrib.dll
+D:\thomasmore\WPF\the amazing labyrinth\github\2021-WPF-ET-25\DeBetoverdeDoolhof\DeBetoverdeDoolhof\bin\Debug\Dapper.dll
+D:\thomasmore\WPF\the amazing labyrinth\github\2021-WPF-ET-25\DeBetoverdeDoolhof\DeBetoverdeDoolhof\bin\Debug\Dapper.xml
+D:\thomasmore\WPF\the amazing labyrinth\github\2021-WPF-ET-25\DeBetoverdeDoolhof\DeBetoverdeDoolhof\bin\Debug\Dapper.Contrib.xml
+D:\thomasmore\WPF\the amazing labyrinth\github\2021-WPF-ET-25\DeBetoverdeDoolhof\DeBetoverdeDoolhof\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\thomasmore\WPF\the amazing labyrinth\github\2021-WPF-ET-25\DeBetoverdeDoolhof\DeBetoverdeDoolhof\obj\Debug\DeBetoverdeDoolhof_Content.g.cs

@@ -35,10 +35,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.2.0.78\lib\net461\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Dapper.Contrib, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.Contrib.2.0.78\lib\net461\Dapper.Contrib.dll</HintPath>
+    </Reference>
     <Reference Include="FluentWPF, Version=0.9.0.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\FluentWPF.0.9.0\lib\net45\FluentWPF.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -58,6 +65,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Extensions\DialogService.cs" />
+    <Compile Include="Extensions\ListExtensions.cs" />
+    <Compile Include="Extensions\Messenger.cs" />
+    <Compile Include="Model\BaseModel.cs" />
+    <Compile Include="Model\Player.cs" />
+    <Compile Include="Model\PlayerDataService.cs" />
+    <Compile Include="Model\Wizard.cs" />
+    <Compile Include="Model\WizardDataService.cs" />
+    <Compile Include="ViewModel\BaseCommand.cs" />
+    <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModelLocator.cs" />
+    <Compile Include="ViewModel\PlayersViewModel.cs" />
     <Compile Include="View\PlayersModalWindow.xaml.cs">
       <DependentUpon>PlayersModalWindow.xaml</DependentUpon>
     </Compile>
@@ -119,10 +139,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
-    <Folder Include="ViewModel\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <SplashScreen Include="Resources\splash.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -250,6 +267,25 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\controls\rotate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\wizards\air.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\wizards\earth.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\wizards\fire.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\wizards\water.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="Scripts\player.sql">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+    </Content>
+    <Content Include="Scripts\wizard.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

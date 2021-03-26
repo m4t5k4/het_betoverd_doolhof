@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DeBetoverdeDoolhof.View"
         xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
+        DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=MainViewModel}"
         mc:Ignorable="d"
         Title="De betoverde doolhof" Height="840" Width="1280">
     <Grid Margin="20" Background="#005A9E" Opacity="1">
@@ -34,9 +35,18 @@
 
             <Image Source="/Resources/wizards/blue_wizard.png" Grid.Column="1" Grid.Row="4"/>
 
-            <Button Grid.Column="1" Grid.Row="5" Content="spelregels" HorizontalAlignment="Center" Padding="20 0 20 0" Margin="0 10 0 10" Click="Button_Click_Rules" />
-            <Button Grid.Column="1" Grid.Row="6" Content="toon schatkaart" HorizontalAlignment="Center" Padding="20 0 20 0" Margin="0 10 0 10" Click="Button_Click_Treasures"/>
-            <Button Grid.Column="1" Grid.Row="7" Content="spelers aanpassen" HorizontalAlignment="Center" Padding="20 0 20 0" Margin="0 10 0 10" Click="Button_Click_Players"/>
+            <Button Grid.Column="1" Grid.Row="5" 
+                    Content="spelregels" HorizontalAlignment="Center" 
+                    Padding="20 0 20 0" Margin="0 10 0 10"
+                    Command="{Binding ShowRulesCommand}"/>
+            <Button Grid.Column="1" Grid.Row="6" 
+                    Content="toon schatkaart" HorizontalAlignment="Center" 
+                    Padding="20 0 20 0" Margin="0 10 0 10"
+                    Command="{Binding ShowTreasuresCommand}"/>
+            <Button Grid.Column="1" Grid.Row="7"
+                    Content="spelers aanpassen" HorizontalAlignment="Center"
+                    Padding="20 0 20 0" Margin="0 10 0 10"
+                    Command="{Binding ChangePlayersCommand}"/>
         </Grid>
 
 

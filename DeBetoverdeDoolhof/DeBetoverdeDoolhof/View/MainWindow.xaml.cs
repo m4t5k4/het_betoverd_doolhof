@@ -24,22 +24,5 @@ namespace DeBetoverdeDoolhof.View
         {
             InitializeComponent();
         }
-
-        private void Button_Click_Rules(object sender, RoutedEventArgs e)
-        {
-            RulesModalWindow rulesModal = new RulesModalWindow();
-            rulesModal.ShowDialog();
-        }
-
-        private void Button_Click_Treasures(object sender, RoutedEventArgs e)
-        {
-            TreasuresModalWindow treasuresModal = new TreasuresModalWindow();
-            treasuresModal.ShowDialog();
-        }
-        private void Button_Click_Players(object sender, RoutedEventArgs e)
-        {
-            PlayersModalWindow playersModal = new PlayersModalWindow();
-            playersModal.ShowDialog();
-        }
     }
 }
