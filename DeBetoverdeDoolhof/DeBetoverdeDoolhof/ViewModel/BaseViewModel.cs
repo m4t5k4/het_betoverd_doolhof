@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DeBetoverdeDoolhof.ViewModel
 {
-    class BaseViewModel : INotifyPropertyChanged
+    public class BaseViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

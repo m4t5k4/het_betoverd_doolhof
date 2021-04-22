@@ -69,14 +69,21 @@
     <Compile Include="Extensions\ListExtensions.cs" />
     <Compile Include="Extensions\Messenger.cs" />
     <Compile Include="Model\BaseModel.cs" />
-    <Compile Include="Model\Player.cs" />
-    <Compile Include="Model\PlayerDataService.cs" />
-    <Compile Include="Model\Wizard.cs" />
-    <Compile Include="Model\WizardDataService.cs" />
+    <Compile Include="Model\Board.cs" />
+    <Compile Include="Model\MazeCard\MazeCard.cs" />
+    <Compile Include="Model\MazeCard\MazeCardDataService.cs" />
+    <Compile Include="Model\Player\Player.cs" />
+    <Compile Include="Model\Player\PlayerDataService.cs" />
+    <Compile Include="Model\Square.cs" />
+    <Compile Include="Model\TreasureCard\TreasureCard.cs" />
+    <Compile Include="Model\TreasureCard\TreasureCardDataService.cs" />
+    <Compile Include="Model\Wizard\Wizard.cs" />
+    <Compile Include="Model\Wizard\WizardDataService.cs" />
     <Compile Include="ViewModel\BaseCommand.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModelLocator.cs" />
+    <Compile Include="ViewModel\ParameterCommand.cs" />
     <Compile Include="ViewModel\PlayersViewModel.cs" />
     <Compile Include="View\PlayersModalWindow.xaml.cs">
       <DependentUpon>PlayersModalWindow.xaml</DependentUpon>
@@ -152,112 +159,304 @@
     <Resource Include="Resources\wizards\yellow_wizard.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\maze\fixed\m_yellow.png" />
+    <Resource Include="Resources\maze\fixed\m_yellow.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\maze\fixed\m_blue.png" />
-    <Resource Include="Resources\maze\fixed\m_green.png" />
-    <Resource Include="Resources\maze\fixed\m_red.png" />
+    <Resource Include="Resources\maze\fixed\m_blue.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\fixed\m_green.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\fixed\m_red.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\maze\fixed\m_armor.png" />
-    <Resource Include="Resources\maze\fixed\m_book.png" />
-    <Resource Include="Resources\maze\fixed\m_chandelier.png" />
-    <Resource Include="Resources\maze\fixed\m_chest.png" />
-    <Resource Include="Resources\maze\fixed\m_coins.png" />
-    <Resource Include="Resources\maze\fixed\m_crown.png" />
-    <Resource Include="Resources\maze\fixed\m_gem.png" />
-    <Resource Include="Resources\maze\fixed\m_keys.png" />
-    <Resource Include="Resources\maze\fixed\m_map.png" />
-    <Resource Include="Resources\maze\fixed\m_ring.png" />
-    <Resource Include="Resources\maze\fixed\m_skull.png" />
-    <Resource Include="Resources\maze\fixed\m_sword.png" />
+    <Resource Include="Resources\maze\fixed\m_armor.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\fixed\m_book.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\fixed\m_chandelier.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\fixed\m_chest.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\fixed\m_coins.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\fixed\m_crown.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\fixed\m_gem.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\fixed\m_keys.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\fixed\m_map.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\fixed\m_ring.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\fixed\m_skull.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\fixed\m_sword.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\maze\rotatable\m_bat_1.png" />
-    <Resource Include="Resources\maze\rotatable\m_bat_2.png" />
-    <Resource Include="Resources\maze\rotatable\m_bat_3.png" />
-    <Resource Include="Resources\maze\rotatable\m_bat_4.png" />
-    <Resource Include="Resources\maze\rotatable\m_corner_1.png" />
-    <Resource Include="Resources\maze\rotatable\m_corner_2.png" />
-    <Resource Include="Resources\maze\rotatable\m_corner_3.png" />
-    <Resource Include="Resources\maze\rotatable\m_corner_4.png" />
-    <Resource Include="Resources\maze\rotatable\m_dragonfly_1.png" />
-    <Resource Include="Resources\maze\rotatable\m_dragonfly_2.png" />
-    <Resource Include="Resources\maze\rotatable\m_dragonfly_3.png" />
-    <Resource Include="Resources\maze\rotatable\m_dragonfly_4.png" />
-    <Resource Include="Resources\maze\rotatable\m_drake_1.png" />
-    <Resource Include="Resources\maze\rotatable\m_drake_2.png" />
-    <Resource Include="Resources\maze\rotatable\m_drake_3.png" />
-    <Resource Include="Resources\maze\rotatable\m_drake_4.png" />
-    <Resource Include="Resources\maze\rotatable\m_fairy_1.png" />
-    <Resource Include="Resources\maze\rotatable\m_fairy_2.png" />
-    <Resource Include="Resources\maze\rotatable\m_fairy_3.png" />
-    <Resource Include="Resources\maze\rotatable\m_fairy_4.png" />
-    <Resource Include="Resources\maze\rotatable\m_ghost_1.png" />
-    <Resource Include="Resources\maze\rotatable\m_ghost_2.png" />
-    <Resource Include="Resources\maze\rotatable\m_ghost_3.png" />
-    <Resource Include="Resources\maze\rotatable\m_ghost_4.png" />
-    <Resource Include="Resources\maze\rotatable\m_ogre_1.png" />
-    <Resource Include="Resources\maze\rotatable\m_ogre_2.png" />
-    <Resource Include="Resources\maze\rotatable\m_ogre_3.png" />
-    <Resource Include="Resources\maze\rotatable\m_ogre_4.png" />
-    <Resource Include="Resources\maze\rotatable\m_rat_1.png" />
-    <Resource Include="Resources\maze\rotatable\m_rat_2.png" />
-    <Resource Include="Resources\maze\rotatable\m_rat_3.png" />
-    <Resource Include="Resources\maze\rotatable\m_rat_4.png" />
-    <Resource Include="Resources\maze\rotatable\m_scarab_1.png" />
-    <Resource Include="Resources\maze\rotatable\m_scarab_2.png" />
-    <Resource Include="Resources\maze\rotatable\m_scarab_3.png" />
-    <Resource Include="Resources\maze\rotatable\m_scarab_4.png" />
-    <Resource Include="Resources\maze\rotatable\m_straight_1.png" />
-    <Resource Include="Resources\maze\rotatable\m_straight_2.png" />
-    <Resource Include="Resources\maze\rotatable\m_straight_3.png" />
-    <Resource Include="Resources\maze\rotatable\m_straight_4.png" />
-    <Resource Include="Resources\maze\rotatable\m_wish_ghost_1.png" />
-    <Resource Include="Resources\maze\rotatable\m_wish_ghost_2.png" />
-    <Resource Include="Resources\maze\rotatable\m_wish_ghost_3.png" />
-    <Resource Include="Resources\maze\rotatable\m_wish_ghost_4.png" />
+    <Resource Include="Resources\maze\rotatable\m_bat_1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\rotatable\m_bat_2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\rotatable\m_bat_3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\rotatable\m_bat_4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\rotatable\m_corner_1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\rotatable\m_corner_2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\rotatable\m_corner_3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\rotatable\m_corner_4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\rotatable\m_dragonfly_1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\rotatable\m_dragonfly_2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\rotatable\m_dragonfly_3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\rotatable\m_dragonfly_4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\rotatable\m_drake_1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\rotatable\m_drake_2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\rotatable\m_drake_3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\rotatable\m_drake_4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\rotatable\m_fairy_1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\rotatable\m_fairy_2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\rotatable\m_fairy_3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\rotatable\m_fairy_4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\rotatable\m_ghost_1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\rotatable\m_ghost_2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\rotatable\m_ghost_3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\rotatable\m_ghost_4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\rotatable\m_ogre_1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\rotatable\m_ogre_2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\rotatable\m_ogre_3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\rotatable\m_ogre_4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\rotatable\m_rat_1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\rotatable\m_rat_2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\rotatable\m_rat_3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\rotatable\m_rat_4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\rotatable\m_scarab_1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\rotatable\m_scarab_2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\rotatable\m_scarab_3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\rotatable\m_scarab_4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\rotatable\m_straight_1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\rotatable\m_straight_2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\rotatable\m_straight_3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\rotatable\m_straight_4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\rotatable\m_wish_ghost_1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\rotatable\m_wish_ghost_2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\rotatable\m_wish_ghost_3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\rotatable\m_wish_ghost_4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\maze\rotatable\m_owl_1.png" />
-    <Resource Include="Resources\maze\rotatable\m_owl_2.png" />
-    <Resource Include="Resources\maze\rotatable\m_owl_3.png" />
-    <Resource Include="Resources\maze\rotatable\m_owl_4.png" />
-    <Resource Include="Resources\maze\rotatable\m_salamander_1.png" />
-    <Resource Include="Resources\maze\rotatable\m_salamander_2.png" />
-    <Resource Include="Resources\maze\rotatable\m_salamander_3.png" />
-    <Resource Include="Resources\maze\rotatable\m_salamander_4.png" />
-    <Resource Include="Resources\maze\rotatable\m_spider_1.png" />
-    <Resource Include="Resources\maze\rotatable\m_spider_2.png" />
-    <Resource Include="Resources\maze\rotatable\m_spider_3.png" />
-    <Resource Include="Resources\maze\rotatable\m_spider_4.png" />
+    <Resource Include="Resources\maze\rotatable\m_owl_1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\rotatable\m_owl_2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\rotatable\m_owl_3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\rotatable\m_owl_4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\rotatable\m_salamander_1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\rotatable\m_salamander_2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\rotatable\m_salamander_3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\rotatable\m_salamander_4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\rotatable\m_spider_1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\rotatable\m_spider_2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\rotatable\m_spider_3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\maze\rotatable\m_spider_4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\treasures\armor.png" />
-    <Resource Include="Resources\treasures\bat.png" />
-    <Resource Include="Resources\treasures\book.png" />
-    <Resource Include="Resources\treasures\chandelier.png" />
-    <Resource Include="Resources\treasures\chest.png" />
-    <Resource Include="Resources\treasures\coins.png" />
-    <Resource Include="Resources\treasures\crown.png" />
-    <Resource Include="Resources\treasures\dragon.png" />
-    <Resource Include="Resources\treasures\dragonfly.png" />
-    <Resource Include="Resources\treasures\fairy.png" />
-    <Resource Include="Resources\treasures\gem.png" />
-    <Resource Include="Resources\treasures\ghost.png" />
-    <Resource Include="Resources\treasures\keys.png" />
-    <Resource Include="Resources\treasures\map.png" />
-    <Resource Include="Resources\treasures\ogre.png" />
-    <Resource Include="Resources\treasures\owl.png" />
-    <Resource Include="Resources\treasures\rat.png" />
-    <Resource Include="Resources\treasures\ring.png" />
-    <Resource Include="Resources\treasures\salamander.png" />
-    <Resource Include="Resources\treasures\scarab.png" />
-    <Resource Include="Resources\treasures\skull.png" />
-    <Resource Include="Resources\treasures\spider.png" />
-    <Resource Include="Resources\treasures\sword.png" />
-    <Resource Include="Resources\treasures\wish_ghost.png" />
+    <Resource Include="Resources\treasures\armor.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\treasures\bat.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\treasures\book.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\treasures\chandelier.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\treasures\chest.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\treasures\coins.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\treasures\crown.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\treasures\drake.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\treasures\dragonfly.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\treasures\fairy.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\treasures\gem.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\treasures\ghost.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\treasures\keys.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\treasures\map.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\treasures\ogre.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\treasures\owl.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\treasures\rat.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\treasures\ring.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\treasures\salamander.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\treasures\scarab.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\treasures\skull.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\treasures\spider.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\treasures\sword.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\treasures\wish_ghost.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\controls\arrow_down.png" />
@@ -281,10 +480,12 @@
     <Resource Include="Resources\wizards\water.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Content Include="Scripts\maze_card.sql" />
     <Content Include="Scripts\player.sql">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
     </Content>
+    <Content Include="Scripts\treasure_card.sql" />
     <Content Include="Scripts\wizard.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

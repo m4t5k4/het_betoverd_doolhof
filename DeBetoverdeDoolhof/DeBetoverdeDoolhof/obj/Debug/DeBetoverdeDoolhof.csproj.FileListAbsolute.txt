@@ -27,3 +27,4 @@ D:\thomasmore\WPF\the amazing labyrinth\github\2021-WPF-ET-25\DeBetoverdeDoolhof
 D:\thomasmore\WPF\the amazing labyrinth\github\2021-WPF-ET-25\DeBetoverdeDoolhof\DeBetoverdeDoolhof\bin\Debug\Dapper.Contrib.xml
 D:\thomasmore\WPF\the amazing labyrinth\github\2021-WPF-ET-25\DeBetoverdeDoolhof\DeBetoverdeDoolhof\obj\Debug\GeneratedInternalTypeHelper.g.cs
 D:\thomasmore\WPF\the amazing labyrinth\github\2021-WPF-ET-25\DeBetoverdeDoolhof\DeBetoverdeDoolhof\obj\Debug\DeBetoverdeDoolhof_Content.g.cs
+D:\thomasmore\WPF\the amazing labyrinth\github\2021-WPF-ET-25\DeBetoverdeDoolhof\DeBetoverdeDoolhof\obj\Debug\DeBetoverdeDoolhof.csprojAssemblyReference.cache

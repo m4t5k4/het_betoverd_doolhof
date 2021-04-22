@@ -8,7 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("scripts/maze_card.sql")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("scripts/player.sql")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("scripts/treasure_card.sql")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("scripts/wizard.sql")]
 
 
