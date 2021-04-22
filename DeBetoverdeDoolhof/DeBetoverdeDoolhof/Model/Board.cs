@@ -122,7 +122,6 @@ namespace DeBetoverdeDoolhof.Model
                 }
             }
 
-            var item = this.Single(i => i.Name == "yellow");
             freeMazeCard = mazeCards.Last()[0];
             List<MazeCard> lastCard = mazeCards.Last();
         }

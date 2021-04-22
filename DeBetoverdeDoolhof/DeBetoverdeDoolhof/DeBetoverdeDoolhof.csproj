@@ -83,7 +83,7 @@
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModelLocator.cs" />
-    <Compile Include="ViewModel\ParameterCommand.cs" />
+    <Compile Include="ViewModel\AddPieceToBoard.cs" />
     <Compile Include="ViewModel\PlayersViewModel.cs" />
     <Compile Include="View\PlayersModalWindow.xaml.cs">
       <DependentUpon>PlayersModalWindow.xaml</DependentUpon>

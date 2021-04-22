@@ -84,7 +84,7 @@ namespace DeBetoverdeDoolhof.Model
             set
             {
                 playersOnSquare = value;
-                NotifyPropertyChanged("Content");
+                NotifyPropertyChanged();
             }
         }
 
