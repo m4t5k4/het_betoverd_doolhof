@@ -276,7 +276,7 @@
                               ItemTemplate="{StaticResource ButtonTemplate}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <Grid ShowGridLines="True">
+                            <Grid ShowGridLines="False">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition/>
                                     <ColumnDefinition/>

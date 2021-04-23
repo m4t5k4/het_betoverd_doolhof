@@ -162,6 +162,7 @@ namespace DeBetoverdeDoolhof.ViewModel
                 indexCurrent = 0;
             }
             CurrentPlayer = Players[indexCurrent];
+            CurrentPlayerImage = CurrentPlayer.Image;
         }
 
         private void DivideTreasureCards()
