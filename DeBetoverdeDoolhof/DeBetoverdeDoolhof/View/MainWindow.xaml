@@ -10,7 +10,9 @@
         Title="De betoverde doolhof" Height="840" Width="1280">
     <Window.Resources>
         <DataTemplate x:Key="ButtonTemplate">
-            <Button Width="90" Height="90" Background="Transparent" BorderBrush="Transparent">
+            <Button x:Name="button1" Width="90" Height="90" Background="Transparent" BorderBrush="Transparent"
+                    Command="{Binding RelativeSource={RelativeSource AncestorType=ItemsControl}, Path=DataContext.MovePlayerToCommand}"
+                    CommandParameter="{Binding ElementName=button1}">
                 <Grid>
                     <Image Source="{Binding Image}" Width="100"/>
                     <ItemsControl ItemsSource="{Binding PlayersOnSquare}">
@@ -259,9 +261,8 @@
                 </StackPanel>
             </Button>
 
-            <Grid Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="7" Grid.RowSpan="7">
+            <Grid x:Name="GridBoard" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="7" Grid.RowSpan="7">
                 <ItemsControl ItemsSource="{Binding Board}"
-                              
                               ItemTemplate="{StaticResource ButtonTemplate}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>

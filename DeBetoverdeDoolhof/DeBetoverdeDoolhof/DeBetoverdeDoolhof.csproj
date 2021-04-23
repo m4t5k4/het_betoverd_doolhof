@@ -74,6 +74,8 @@
     <Compile Include="Model\MazeCard\MazeCardDataService.cs" />
     <Compile Include="Model\Player\Player.cs" />
     <Compile Include="Model\Player\PlayerDataService.cs" />
+    <Compile Include="Model\Player\PlayerPosition.cs" />
+    <Compile Include="Model\Player\PlayerPositionDataService.cs" />
     <Compile Include="Model\Square.cs" />
     <Compile Include="Model\TreasureCard\TreasureCard.cs" />
     <Compile Include="Model\TreasureCard\TreasureCardDataService.cs" />
@@ -86,6 +88,7 @@
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModelLocator.cs" />
     <Compile Include="ViewModel\AddPieceToBoard.cs" />
+    <Compile Include="ViewModel\MovePlayerToCommand.cs" />
     <Compile Include="ViewModel\PlayersViewModel.cs" />
     <Compile Include="View\PlayersModalWindow.xaml.cs">
       <DependentUpon>PlayersModalWindow.xaml</DependentUpon>
@@ -482,6 +485,7 @@
     <Resource Include="Resources\wizards\water.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Content Include="Scripts\player_position.sql" />
     <Content Include="Scripts\maze_card.sql" />
     <Content Include="Scripts\player.sql">
       <SubType>Designer</SubType>

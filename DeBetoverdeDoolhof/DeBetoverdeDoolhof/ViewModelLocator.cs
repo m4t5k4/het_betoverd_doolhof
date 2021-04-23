@@ -1,4 +1,5 @@
-﻿using DeBetoverdeDoolhof.Stores;
+﻿using DeBetoverdeDoolhof.Model;
+using DeBetoverdeDoolhof.Stores;
 using DeBetoverdeDoolhof.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,11 @@ namespace DeBetoverdeDoolhof
     class ViewModelLocator
     {
         private static PlayerStore playerStore = new PlayerStore();
-        private static MainViewModel mainViewModel = new MainViewModel(playerStore);
+        private static WizardDataService wizardDataService = new WizardDataService();
+        private static MazeCardDataService mazeCardDataService = new MazeCardDataService();
+        private static PlayerDataService playerDataService = new PlayerDataService();
+        private static PlayerPositionDataService playerPositionDataService = new PlayerPositionDataService();
+        private static MainViewModel mainViewModel = new MainViewModel(playerStore, wizardDataService, mazeCardDataService, playerDataService, playerPositionDataService);
 
         public static MainViewModel MainViewModel
         {
