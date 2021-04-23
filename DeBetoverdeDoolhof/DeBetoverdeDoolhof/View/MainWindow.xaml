@@ -11,8 +11,17 @@
     <Window.Resources>
         <DataTemplate x:Key="ButtonTemplate">
             <Button Width="90" Height="90" Background="Transparent" BorderBrush="Transparent">
-                <Image Source="{Binding Image}" Width="100">
-                </Image>
+                <Grid>
+                    <Image Source="{Binding Image}" Width="100"/>
+                    <ItemsControl ItemsSource="{Binding PlayersOnSquare}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Image Source="{Binding Image}" Width="80" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                    
+                </Grid>
             </Button>
         </DataTemplate>
     </Window.Resources>
@@ -70,7 +79,7 @@
 
             <TextBlock Grid.Column="1" Grid.Row="3" Text="speler aan de beurt" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black" FontSize="20"/>
 
-            <Image Source="/Resources/wizards/blue_wizard.png" Grid.Column="1" Grid.Row="4"/>
+            <Image Source="{Binding CurrentPlayerImage}" Grid.Column="1" Grid.Row="4"/>
 
             <Button Grid.Column="1" Grid.Row="5" 
                     Content="spelregels" HorizontalAlignment="Center" 

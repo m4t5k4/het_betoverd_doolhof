@@ -64,5 +64,8 @@
         <Button Grid.Column="1" Grid.Row="1"
                 Content="Verwijderen" Height="50" Width="80" Margin="-100 0 0 0"
                 Command="{Binding DeletePlayerCommand}"/>
+        <Button Grid.Column="1" Grid.Row="1"
+                Content="Bevestigen" Height="50" Width="80" Margin="100 0 0 0"
+                Command="{Binding CreatePlayersCommand}"/>
     </Grid>
 </fw:AcrylicWindow>

@@ -1,4 +1,5 @@
 ﻿using DeBetoverdeDoolhof.Model;
+using DeBetoverdeDoolhof.Stores;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,15 +9,16 @@ using System.Windows.Input;
 
 namespace DeBetoverdeDoolhof.ViewModel
 {
-    public class BaseCommand : ICommand
+    public class ConfirmPlayersCommand : ICommand
     {
-        Action actie;
+        private readonly PlayersViewModel _viewModel;
+        private readonly PlayerStore _playerStore;
 
-        public BaseCommand(Action Actie)
+        public ConfirmPlayersCommand(PlayersViewModel viewModel, PlayerStore playerStore)
         {
-            actie = Actie;
+            _viewModel = viewModel;
+            _playerStore = playerStore;
         }
-
 
         public event EventHandler CanExecuteChanged;
 
@@ -27,7 +29,8 @@ namespace DeBetoverdeDoolhof.ViewModel
 
         public void Execute(object parameter)
         {
-            actie.Invoke();
+            List<Player> players = _viewModel.Players.ToList();
+            _playerStore.CreatePlayers(players);
         }
     }
 }

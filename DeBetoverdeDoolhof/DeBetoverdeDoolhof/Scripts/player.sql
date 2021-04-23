@@ -11,6 +11,7 @@ CREATE TABLE [dbo].[Player](
 	[Position] [varchar](max) NOT NULL,
 	[IsWinner] [bit] NOT NULL,
 	[WizardID] [int] NOT NULL,
+	[Image] [varchar] (max) NOT NULL,
  CONSTRAINT [PK_Player] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC

@@ -92,6 +92,20 @@ namespace DeBetoverdeDoolhof.Model
             }
         }
 
+        private string image;
+        public string Image
+        {
+            get
+            {
+                return image;
+            }
+            set
+            {
+                image = value;
+                NotifyPropertyChanged();
+            }
+        }
+
         public Player()
         {
 

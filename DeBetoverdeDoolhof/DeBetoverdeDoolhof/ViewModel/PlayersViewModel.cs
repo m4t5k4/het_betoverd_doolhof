@@ -1,5 +1,6 @@
 ﻿using DeBetoverdeDoolhof.Extensions;
 using DeBetoverdeDoolhof.Model;
+using DeBetoverdeDoolhof.Stores;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -10,7 +11,7 @@ using System.Windows.Input;
 
 namespace DeBetoverdeDoolhof.ViewModel
 {
-    class PlayersViewModel: BaseViewModel
+    public class PlayersViewModel: BaseViewModel
     {
 
         private ObservableCollection<Player> players;
@@ -71,8 +72,11 @@ namespace DeBetoverdeDoolhof.ViewModel
         private ICommand deletePlayerCommand;
         public ICommand DeletePlayerCommand { get { return deletePlayerCommand; } set { deletePlayerCommand = value; } }
 
-        public PlayersViewModel()
+        public ICommand CreatePlayersCommand { get; }
+
+        public PlayersViewModel(PlayerStore playerStore)
         {
+            CreatePlayersCommand = new ConfirmPlayersCommand(this, playerStore);
             PlayerDataService playerDataService = new PlayerDataService();
             Players = playerDataService.GetPlayers();
 
@@ -87,6 +91,7 @@ namespace DeBetoverdeDoolhof.ViewModel
             assignToPlayerCommand = new BaseCommand(AssignToPlayer);
             updatePlayerCommand = new BaseCommand(UpdatePlayer);
             deletePlayerCommand = new BaseCommand(DeletePlayer);
+            
         }
 
         private void AssignToPlayer()
@@ -98,6 +103,7 @@ namespace DeBetoverdeDoolhof.ViewModel
             addPlayer.Position = SelectedWizard.StartPosition;
             addPlayer.IsWinner = false;
             addPlayer.WizardID = SelectedWizard.Id;
+            addPlayer.Image = SelectedWizard.Image;
             playerDataService.InsertPlayer(addPlayer);
             Players = playerDataService.GetPlayers();
         }
@@ -121,6 +127,7 @@ namespace DeBetoverdeDoolhof.ViewModel
                 SelectedPlayer.Name = Name;
                 SelectedPlayer.Position = SelectedWizard.StartPosition;
                 SelectedPlayer.WizardID = SelectedWizard.Id;
+                SelectedPlayer.Image = SelectedWizard.Image;
                 playerDataService.UpdatePlayer(SelectedPlayer);
                 Players = playerDataService.GetPlayers();
             }

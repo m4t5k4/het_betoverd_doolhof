@@ -1,4 +1,5 @@
-﻿using DeBetoverdeDoolhof.ViewModel;
+﻿using DeBetoverdeDoolhof.Stores;
+using DeBetoverdeDoolhof.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,14 +10,15 @@ namespace DeBetoverdeDoolhof
 {
     class ViewModelLocator
     {
-        private static MainViewModel mainViewModel = new MainViewModel();
+        private static PlayerStore playerStore = new PlayerStore();
+        private static MainViewModel mainViewModel = new MainViewModel(playerStore);
 
         public static MainViewModel MainViewModel
         {
             get { return mainViewModel; }
         }
 
-        private static PlayersViewModel playersViewModel = new PlayersViewModel();
+        private static PlayersViewModel playersViewModel = new PlayersViewModel(playerStore);
 
         public static PlayersViewModel PlayersViewModel
         {

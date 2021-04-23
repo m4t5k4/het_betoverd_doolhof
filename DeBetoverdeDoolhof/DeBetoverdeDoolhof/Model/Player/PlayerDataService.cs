@@ -21,6 +21,11 @@ namespace DeBetoverdeDoolhof.Model
         // Dit betekent dat de connectie met de database automatisch geopend wordt.
         private static IDbConnection db = new SqlConnection(connectionString);
 
+        public void Seed()
+        {
+            db.Execute("Delete from Player");
+        }
+
         public ObservableCollection<Player> GetPlayers()
         {
             string sql = "Select * from Player";
@@ -30,14 +35,14 @@ namespace DeBetoverdeDoolhof.Model
 
         public void InsertPlayer(Player player)
         {
-            string sql = "Insert into Player (name, score, position, isWinner, wizardID) values (@name, @score, @position, @isWinner, @wizardID)";
+            string sql = "Insert into Player (name, score, position, isWinner, wizardID, image) values (@name, @score, @position, @isWinner, @wizardID, @image)";
             db.Query(sql, player);
         }
 
         public void UpdatePlayer(Player player)
         {
-            string sql = "Update Player set name = @name, score = @score, position = @position, isWinner = @isWinner, wizardID = @wizardID where id = @id";
-            db.Execute(sql, new { player.Name, player.Score, player.Position, player.IsWinner, player.WizardID, player.Id });
+            string sql = "Update Player set name = @name, score = @score, position = @position, isWinner = @isWinner, wizardID = @wizardID, @image where id = @id";
+            db.Execute(sql, new { player.Name, player.Score, player.Position, player.IsWinner, player.WizardID, player.Image, player.Id });
         }
 
         public void DeletePlayer(int id)

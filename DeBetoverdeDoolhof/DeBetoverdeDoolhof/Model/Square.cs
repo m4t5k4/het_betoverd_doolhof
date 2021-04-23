@@ -11,7 +11,7 @@ namespace DeBetoverdeDoolhof.Model
         private int id;
         private int row;
         private int column;
-        private List<int> playersOnSquare;
+        private List<Player> playersOnSquare;
 
         private string image;
         public string Image
@@ -78,7 +78,7 @@ namespace DeBetoverdeDoolhof.Model
                 NotifyPropertyChanged();
             }
         }
-        public List<int> PlayersOnSquare
+        public List<Player> PlayersOnSquare
         {
             get { return playersOnSquare; }
             set
@@ -96,7 +96,7 @@ namespace DeBetoverdeDoolhof.Model
             Name = name;
             Image = image;
             Rotation = rotation;
-            playersOnSquare = new List<int>();
+            playersOnSquare = new List<Player>();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using DeBetoverdeDoolhof.Extensions;
 using DeBetoverdeDoolhof.Model;
+using DeBetoverdeDoolhof.Stores;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -38,7 +39,13 @@ namespace DeBetoverdeDoolhof.ViewModel
             set { currentPlayer = value; NotifyPropertyChanged(); }
         }
 
+        private string currentPlayerImage;
 
+        public string CurrentPlayerImage
+        {
+            get { return currentPlayerImage; }
+            set { currentPlayerImage = value; NotifyPropertyChanged(); }
+        }
 
         private DialogService dialogService;
         private ObservableCollection<Wizard> wizards;
@@ -57,15 +64,24 @@ namespace DeBetoverdeDoolhof.ViewModel
         private ICommand rotateMazeCardCommand;
         public ICommand RotateMazeCardCommand { get { return rotateMazeCardCommand; } set { rotateMazeCardCommand = value; } }
 
+        public ObservableCollection<Player> Players { get; private set; }
 
-        public MainViewModel()
+        private readonly PlayerStore _playerStore;
+
+
+        public MainViewModel(PlayerStore playerStore)
         {
+            _playerStore = playerStore;
+            _playerStore.PlayersCreated += OnPlayersCreated;
             WizardDataService wizardDataService = new WizardDataService();
             wizardDataService.Seed();
             Wizards = wizardDataService.GetWizards();
 
             MazeCardDataService mazeCardDataService = new MazeCardDataService();
             mazeCardDataService.Seed();
+
+            PlayerDataService playerDataService = new PlayerDataService();
+            playerDataService.Seed();
 
             Board bord = new Board();
             Board = bord;
@@ -99,6 +115,27 @@ namespace DeBetoverdeDoolhof.ViewModel
         private void ShowTreasures()
         {
             dialogService.ShowTreasures();
+        }
+
+        private void OnPlayersCreated(List<Player> players)
+        {
+            Players = players.ToObservableCollection();
+            CurrentPlayer = Players[0];
+            CurrentPlayerImage = Wizards.FirstOrDefault(x => x.Id == CurrentPlayer.WizardID).Image;
+            SetStartingPositions();
+        }
+
+        private void SetStartingPositions()
+        {
+            foreach (Player player in Players)
+            {
+                Wizard wizard = Wizards.FirstOrDefault(x => x.Id == player.WizardID);
+                Square s = Board.FirstOrDefault(x => x.Name == wizard.Color);
+                Square newSquare = new Square(s.Id, s.Row, s.Column, s.Name, s.Image, s.Rotation);
+                newSquare.PlayersOnSquare.Add(player);
+                Board.Remove(s);
+                Board.Add(newSquare);
+            }
         }
 
         private void RotateMazeCard()
