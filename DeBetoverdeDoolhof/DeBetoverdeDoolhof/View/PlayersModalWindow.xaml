@@ -56,16 +56,16 @@
         </ItemsControl>
 
         <Button Grid.Column="1" Grid.Row="1"
-                Content="Opslaan" Height="50" Width="80" Margin="-500 0 0 0"
+                Content="Opslaan" Height="50" Width="100" Margin="-570 0 0 0"
                 Command="{Binding AssignToPlayerCommand}"/>
         <Button Grid.Column="1" Grid.Row="1"
-                Content="Wijzigen" Height="50" Width="80" Margin="-300 0 0 0"
+                Content="Wijzigen" Height="50" Width="100" Margin="-350 0 0 0"
                 Command="{Binding UpdatePlayerCommand}"/>
         <Button Grid.Column="1" Grid.Row="1"
-                Content="Verwijderen" Height="50" Width="80" Margin="-100 0 0 0"
+                Content="Verwijderen" Height="50" Width="110" Margin="-120 0 0 0"
                 Command="{Binding DeletePlayerCommand}"/>
         <Button Grid.Column="1" Grid.Row="1"
-                Content="Bevestigen" Height="50" Width="80" Margin="100 0 0 0"
+                Content="Bevestigen" Height="50" Width="100" Margin="110 0 0 0"
                 Command="{Binding CreatePlayersCommand}"/>
     </Grid>
 </fw:AcrylicWindow>

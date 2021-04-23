@@ -28,15 +28,29 @@ namespace DeBetoverdeDoolhof.Model
             return treasureCards;
         }
 
+        public TreasureCard GetByName(string name)
+        {
+            string sql = "Select * from TreasureCard where name = @name";
+            TreasureCard treasureCard = db.Query<TreasureCard>(sql, new { name }).FirstOrDefault();
+            return treasureCard;
+        }
+
+        public List<TreasureCard> GetByPlayer(int playerId)
+        {
+            string sql = "Select * from TreasureCard where playerId = @playerId";
+            List<TreasureCard> treasureCards = db.Query<TreasureCard>(sql, new { playerId }).ToList();
+            return treasureCards;
+        }
+
         public void InsertTreasureCard(TreasureCard treasureCard)
         {
-            string sql = "Insert into MazeCard (playerID, name, isFound, image) values (@playerID, @name, @isFound, @image)";
+            string sql = "Insert into TreasureCard (playerId, name, isFound, image) values (@playerId, @name, @isFound, @image)";
             db.Query(sql, treasureCard);
         }
 
         public void UpdateTreasureCard(TreasureCard treasureCard)
         {
-            string sql = "Update MazeCard set playerID = @playerID, name = @name, image = @Image, isFound = @isFound where id = @id";
+            string sql = "Update TreasureCard set playerID = @playerID, name = @name, image = @Image, isFound = @isFound where id = @id";
             db.Execute(sql, new { treasureCard.PlayerID, treasureCard.Name, treasureCard.Image, treasureCard.IsFound, treasureCard.Id });
         }
 

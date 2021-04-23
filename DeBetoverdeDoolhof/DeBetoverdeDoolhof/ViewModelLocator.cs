@@ -16,7 +16,9 @@ namespace DeBetoverdeDoolhof
         private static MazeCardDataService mazeCardDataService = new MazeCardDataService();
         private static PlayerDataService playerDataService = new PlayerDataService();
         private static PlayerPositionDataService playerPositionDataService = new PlayerPositionDataService();
-        private static MainViewModel mainViewModel = new MainViewModel(playerStore, wizardDataService, mazeCardDataService, playerDataService, playerPositionDataService);
+        private static TreasureCardDataService treasureCardDataService = new TreasureCardDataService();
+
+        private static MainViewModel mainViewModel = new MainViewModel(playerStore, wizardDataService, mazeCardDataService, playerDataService, playerPositionDataService, treasureCardDataService);
 
         public static MainViewModel MainViewModel
         {
@@ -28,6 +30,20 @@ namespace DeBetoverdeDoolhof
         public static PlayersViewModel PlayersViewModel
         {
             get { return playersViewModel; }
+        }
+
+        private static TreasureCardViewModel treasureCardViewModel = new TreasureCardViewModel(treasureCardDataService);
+
+        public static TreasureCardViewModel TreasureCardViewModel
+        {
+            get { return treasureCardViewModel; }
+        }
+
+        private static ScoresViewModel scoresViewModel = new ScoresViewModel();
+
+        public static ScoresViewModel ScoresViewModel
+        {
+            get { return scoresViewModel;  }
         }
     }
 }

@@ -5,9 +5,56 @@
         xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DeBetoverdeDoolhof.View"
+                  DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=TreasureCardViewModel}"
         mc:Ignorable="d"
         Title="TreasuresModalWindow" Height="450" Width="800">
     <Grid Background="#005A9E">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <ListView ItemsSource="{Binding TreasureCards}" Grid.Row="0"
+                  HorizontalAlignment="Center" VerticalAlignment="Center"
+                  Width="800" Height="450" Background="Transparent">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" IsItemsHost="True" ClipToBounds="False"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListViewItem">
+                                <StackPanel>
+                                    <Canvas Width="40" Height="100">
+                                        <Image Source="{Binding Image}" Width="200" Margin="40 70 5 5"/>
+                                        <ContentPresenter x:Name="CardPresenter"/>
+                                    </Canvas>
+                                </StackPanel>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Panel.ZIndex" Value="99"/>
+                                        <Setter TargetName="CardPresenter" Property="Canvas.Top" Value="-5"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Grid Grid.Row="1">
+            <ProgressBar Minimum="0" Maximum="{Binding Max}" Name="Progress" Value="{Binding XFound}" Width="300" Height="30"/>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Text}"></TextBlock>
+        </Grid>
         
     </Grid>
 </fw:AcrylicWindow>

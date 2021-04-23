@@ -13,6 +13,7 @@ namespace DeBetoverdeDoolhof.Extensions
         Window playersModalWindow = null;
         Window rulesModalWindow = null;
         Window treasuresModalWindow = null;
+        Window scoresWindow = null;
 
 
         public DialogService()
@@ -51,6 +52,17 @@ namespace DeBetoverdeDoolhof.Extensions
         public void CloseTreasures()
         {
             if (treasuresModalWindow != null) treasuresModalWindow.Close();
+        }
+
+        public void ShowScores()
+        {
+            scoresWindow = new ScoresWindow();
+            scoresWindow.ShowDialog();
+        }
+
+        public void CloseScores()
+        {
+            if (scoresWindow != null) scoresWindow.Close();
         }
 
     }

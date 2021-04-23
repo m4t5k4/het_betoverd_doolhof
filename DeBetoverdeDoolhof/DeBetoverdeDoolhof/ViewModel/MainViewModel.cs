@@ -64,6 +64,9 @@ namespace DeBetoverdeDoolhof.ViewModel
         private ICommand rotateMazeCardCommand;
         public ICommand RotateMazeCardCommand { get { return rotateMazeCardCommand; } set { rotateMazeCardCommand = value; } }
 
+        private ICommand showScoresCommand;
+        public ICommand ShowScoresCommand { get { return showScoresCommand; } set { showScoresCommand = value; } }
+
         public MovePlayerToCommand MovePlayerToCommand { get; set; }
         public ObservableCollection<Player> Players { get; private set; }
 
@@ -72,6 +75,7 @@ namespace DeBetoverdeDoolhof.ViewModel
         private static MazeCardDataService _mazeCardDataService;
         private static PlayerDataService _playerDataService;
         private static PlayerPositionDataService _playerPositionDataService;
+        private static TreasureCardDataService _treasureCardDataService;
 
 
         public MainViewModel(
@@ -79,7 +83,8 @@ namespace DeBetoverdeDoolhof.ViewModel
             WizardDataService wizardDataService, 
             MazeCardDataService mazeCardDataService, 
             PlayerDataService playerDataService,
-            PlayerPositionDataService playerPositionDataService)
+            PlayerPositionDataService playerPositionDataService,
+            TreasureCardDataService treasureCardDataService)
         {
             _playerStore = playerStore;
             _playerStore.PlayersCreated += OnPlayersCreated;
@@ -99,6 +104,9 @@ namespace DeBetoverdeDoolhof.ViewModel
             _playerPositionDataService = playerPositionDataService;
             _playerPositionDataService.Seed();
 
+            _treasureCardDataService = treasureCardDataService;
+            _treasureCardDataService.Seed();
+
             Board bord = new Board();
             Board = bord;
             FreeMazeCard = bord.freeMazeCard;
@@ -117,6 +125,7 @@ namespace DeBetoverdeDoolhof.ViewModel
             AddPieceToBoardCommand = new AddPieceToBoard(this);
             RotateMazeCardCommand = new BaseCommand(RotateMazeCard);
             MovePlayerToCommand = new MovePlayerToCommand(this);
+            ShowScoresCommand = new BaseCommand(ShowScores);
         }
 
         private void ChangePlayers()
@@ -131,7 +140,46 @@ namespace DeBetoverdeDoolhof.ViewModel
 
         private void ShowTreasures()
         {
+            Messenger.Default.Send<int>(CurrentPlayer.Id);
             dialogService.ShowTreasures();
+        }
+
+        private void ShowScores()
+        {
+            Messenger.Default.Send<ObservableCollection<Player>>(Players);
+            dialogService.ShowScores();
+        }
+
+        private void NextPlayer()
+        {
+            int indexCurrent = Players.IndexOf(CurrentPlayer);
+            if ((indexCurrent+1) != Players.Count)
+            {
+                indexCurrent++;
+            } 
+            else
+            {
+                indexCurrent = 0;
+            }
+            CurrentPlayer = Players[indexCurrent];
+        }
+
+        private void DivideTreasureCards()
+        {
+            List<TreasureCard> treasureCards = _treasureCardDataService.Get().ToList();
+            int amountPlayers = Players.Count;
+            int cardsPerPlayer = treasureCards.Count / amountPlayers;
+            int index = 0;
+            foreach(Player player in Players)
+            {
+                for (int i = 0; i < cardsPerPlayer; i++)
+                {
+                    TreasureCard c = treasureCards[index];
+                    c.PlayerID = player.Id;
+                    _treasureCardDataService.UpdateTreasureCard(c);
+                    index++;
+                }
+            }
         }
 
         public void MovePlayerToMethod(Button button)
@@ -163,6 +211,8 @@ namespace DeBetoverdeDoolhof.ViewModel
 
             PlayerPosition updated = new PlayerPosition(CurrentPlayer.Id, updatedDestination.Row, updatedDestination.Column);
             _playerPositionDataService.UpdatePlayerPosition(updated);
+
+            NextPlayer();
         }
 
         private void OnPlayersCreated(List<Player> players)
@@ -171,6 +221,8 @@ namespace DeBetoverdeDoolhof.ViewModel
             CurrentPlayer = Players[0];
             CurrentPlayerImage = Wizards.FirstOrDefault(x => x.Id == CurrentPlayer.WizardID).Image;
             SetStartingPositions();
+            DivideTreasureCards();
+            dialogService.ClosePlayers();
         }
 
         private void SetStartingPositions()

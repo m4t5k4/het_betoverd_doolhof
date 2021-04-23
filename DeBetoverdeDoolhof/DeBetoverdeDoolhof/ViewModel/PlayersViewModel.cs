@@ -82,7 +82,7 @@ namespace DeBetoverdeDoolhof.ViewModel
 
             WizardDataService wizardDataService = new WizardDataService();
             Wizards = wizardDataService.GetWizards();
-
+            
             BindCommands();
         }
 
