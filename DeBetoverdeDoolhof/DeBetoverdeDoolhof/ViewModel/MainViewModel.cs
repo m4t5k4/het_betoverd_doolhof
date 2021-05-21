@@ -47,6 +47,14 @@ namespace DeBetoverdeDoolhof.ViewModel
             set { currentPlayerImage = value; NotifyPropertyChanged(); }
         }
 
+        private bool hasPlacedPiece;
+
+        public bool HasPlacedPiece
+        {
+            get { return hasPlacedPiece; }
+            set { hasPlacedPiece = value; }
+        }
+
         private DialogService dialogService;
         private ObservableCollection<Wizard> wizards;
         public ObservableCollection<Wizard> Wizards { get { return wizards; } set { wizards = value; NotifyPropertyChanged(); } }
@@ -115,6 +123,8 @@ namespace DeBetoverdeDoolhof.ViewModel
             dialogService = new DialogService();
             
             BindCommands();
+
+            hasPlacedPiece = false;
         }
 
         private void BindCommands()
@@ -185,6 +195,8 @@ namespace DeBetoverdeDoolhof.ViewModel
 
         public void MovePlayerToMethod(Button button)
         {
+            if (!hasPlacedPiece) return;
+
             Grid x = (Grid)button.Content;
             Square s = (Square)x.DataContext;
             Square destination = Board.FirstOrDefault(y => y.Id == s.Id);
@@ -214,6 +226,7 @@ namespace DeBetoverdeDoolhof.ViewModel
             _playerPositionDataService.UpdatePlayerPosition(updated);
 
             NextPlayer();
+            hasPlacedPiece = false;
         }
 
         private void OnPlayersCreated(List<Player> players)
@@ -589,6 +602,7 @@ namespace DeBetoverdeDoolhof.ViewModel
                     }
                 }
             }
+            hasPlacedPiece = true;
         }
     }
 }
