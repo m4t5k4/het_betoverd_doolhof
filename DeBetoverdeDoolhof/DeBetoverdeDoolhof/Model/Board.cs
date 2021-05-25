@@ -9,10 +9,11 @@ namespace DeBetoverdeDoolhof.Model
 {
     public class Board: ObservableCollection<Square>
     {
-        public MazeCardDataService mazeCardDataService = new MazeCardDataService();
+        private MazeCardDataService _mazeCardDataService;
         public MazeCard freeMazeCard = new MazeCard();
-        public Board()
+        public Board(MazeCardDataService mazeCardDataService)
         {
+            _mazeCardDataService = mazeCardDataService;
             CreateBoard();
             //PutPlayersOnStart();
         }
@@ -25,10 +26,10 @@ namespace DeBetoverdeDoolhof.Model
         private void CreateBoard()
         {
             //startplaatsen
-            MazeCard yellow = mazeCardDataService.GetByName("yellow")[0];
-            MazeCard blue = mazeCardDataService.GetByName("blue")[0];
-            MazeCard red = mazeCardDataService.GetByName("red")[0];
-            MazeCard green = mazeCardDataService.GetByName("green")[0];
+            MazeCard yellow = _mazeCardDataService.GetByName("yellow")[0];
+            MazeCard blue = _mazeCardDataService.GetByName("blue")[0];
+            MazeCard red = _mazeCardDataService.GetByName("red")[0];
+            MazeCard green = _mazeCardDataService.GetByName("green")[0];
             this.Add(new Square(1, 0, 0, yellow.Name, yellow.Image, 0));
             this.Add(new Square(2, 0, 6, blue.Name, blue.Image, 0));
             this.Add(new Square(3, 6, 0, red.Name, red.Image, 0));
@@ -36,49 +37,49 @@ namespace DeBetoverdeDoolhof.Model
 
             //other fixed pieces
             //row 0
-            MazeCard skull = mazeCardDataService.GetByName("skull")[0];
-            MazeCard sword = mazeCardDataService.GetByName("sword")[0];
+            MazeCard skull = _mazeCardDataService.GetByName("skull")[0];
+            MazeCard sword = _mazeCardDataService.GetByName("sword")[0];
             this.Add(new Square(5, 0, 2, skull.Name, skull.Image, 0));
             this.Add(new Square(6, 0, 4, sword.Name, sword.Image, 0));
 
-            MazeCard coins = mazeCardDataService.GetByName("coins")[0];
-            MazeCard keys = mazeCardDataService.GetByName("keys")[0];
-            MazeCard gem = mazeCardDataService.GetByName("gem")[0];
-            MazeCard armor = mazeCardDataService.GetByName("armor")[0];
+            MazeCard coins = _mazeCardDataService.GetByName("coins")[0];
+            MazeCard keys = _mazeCardDataService.GetByName("keys")[0];
+            MazeCard gem = _mazeCardDataService.GetByName("gem")[0];
+            MazeCard armor = _mazeCardDataService.GetByName("armor")[0];
             this.Add(new Square(7, 2, 0, coins.Name, coins.Image, 0));
             this.Add(new Square(8, 2, 2, keys.Name, keys.Image, 0));
             this.Add(new Square(9, 2, 4, gem.Name, gem.Image, 0));
             this.Add(new Square(10, 2, 6, armor.Name, armor.Image, 0));
 
-            MazeCard book = mazeCardDataService.GetByName("book")[0];
-            MazeCard crown = mazeCardDataService.GetByName("crown")[0];
-            MazeCard chest = mazeCardDataService.GetByName("chest")[0];
-            MazeCard chandelier = mazeCardDataService.GetByName("chandelier")[0];
+            MazeCard book = _mazeCardDataService.GetByName("book")[0];
+            MazeCard crown = _mazeCardDataService.GetByName("crown")[0];
+            MazeCard chest = _mazeCardDataService.GetByName("chest")[0];
+            MazeCard chandelier = _mazeCardDataService.GetByName("chandelier")[0];
             this.Add(new Square(11, 4, 0, book.Name, book.Image, 0));
             this.Add(new Square(12, 4, 2, crown.Name, crown.Image, 0));
             this.Add(new Square(13, 4, 4, chest.Name, chest.Image, 0));
             this.Add(new Square(14, 4, 6, chandelier.Name, chandelier.Image, 0));
 
-            MazeCard map = mazeCardDataService.GetByName("map")[0];
-            MazeCard ring = mazeCardDataService.GetByName("ring")[0];
+            MazeCard map = _mazeCardDataService.GetByName("map")[0];
+            MazeCard ring = _mazeCardDataService.GetByName("ring")[0];
             this.Add(new Square(15, 6, 2, map.Name, map.Image, 0));
             this.Add(new Square(16, 6, 4, ring.Name, ring.Image, 0));
 
             //randomize 
-            List<MazeCard> bat = mazeCardDataService.GetByName("bat");
-            List<MazeCard> corner = mazeCardDataService.GetByName("corner");
-            List<MazeCard> dragonfly = mazeCardDataService.GetByName("dragonfly");
-            List<MazeCard> drake = mazeCardDataService.GetByName("drake");
-            List<MazeCard> fairy = mazeCardDataService.GetByName("fairy");
-            List<MazeCard> ghost = mazeCardDataService.GetByName("ghost");
-            List<MazeCard> ogre = mazeCardDataService.GetByName("ogre");
-            List<MazeCard> owl = mazeCardDataService.GetByName("owl");
-            List<MazeCard> rat = mazeCardDataService.GetByName("rat");
-            List<MazeCard> salamander = mazeCardDataService.GetByName("salamander");
-            List<MazeCard> scarab = mazeCardDataService.GetByName("scarab");
-            List<MazeCard> spider = mazeCardDataService.GetByName("spider");
-            List<MazeCard> straight = mazeCardDataService.GetByName("straight");
-            List<MazeCard> wish_ghost = mazeCardDataService.GetByName("wish_ghost");
+            List<MazeCard> bat = _mazeCardDataService.GetByName("bat");
+            List<MazeCard> corner = _mazeCardDataService.GetByName("corner");
+            List<MazeCard> dragonfly = _mazeCardDataService.GetByName("dragonfly");
+            List<MazeCard> drake = _mazeCardDataService.GetByName("drake");
+            List<MazeCard> fairy = _mazeCardDataService.GetByName("fairy");
+            List<MazeCard> ghost = _mazeCardDataService.GetByName("ghost");
+            List<MazeCard> ogre = _mazeCardDataService.GetByName("ogre");
+            List<MazeCard> owl = _mazeCardDataService.GetByName("owl");
+            List<MazeCard> rat = _mazeCardDataService.GetByName("rat");
+            List<MazeCard> salamander = _mazeCardDataService.GetByName("salamander");
+            List<MazeCard> scarab = _mazeCardDataService.GetByName("scarab");
+            List<MazeCard> spider = _mazeCardDataService.GetByName("spider");
+            List<MazeCard> straight = _mazeCardDataService.GetByName("straight");
+            List<MazeCard> wish_ghost = _mazeCardDataService.GetByName("wish_ghost");
 
             List<List<MazeCard>> mazeCards = new List<List<MazeCard>>() { bat, dragonfly, drake, fairy, ghost, ogre, owl, rat, salamander, scarab, spider, wish_ghost };
             List<List<MazeCard>> straights = new List<List<MazeCard>>();

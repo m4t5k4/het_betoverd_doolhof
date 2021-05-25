@@ -97,15 +97,13 @@ namespace DeBetoverdeDoolhof.ViewModel
             _playerStore = playerStore;
             _playerStore.PlayersCreated += OnPlayersCreated;
             _wizardDataService = wizardDataService;
-            //WizardDataService wizardDataService = new WizardDataService();
             _wizardDataService.Seed();
             Wizards = _wizardDataService.GetWizards();
 
-            //MazeCardDataService mazeCardDataService = new MazeCardDataService();
             _mazeCardDataService = mazeCardDataService;
-            _mazeCardDataService.Seed();
+            //_mazeCardDataService.Seed();
+            _mazeCardDataService.FillMazeCardsCollection();
 
-            //PlayerDataService playerDataService = new PlayerDataService();
             _playerDataService = playerDataService;
             _playerDataService.Seed();
 
@@ -115,9 +113,10 @@ namespace DeBetoverdeDoolhof.ViewModel
             _treasureCardDataService = treasureCardDataService;
             _treasureCardDataService.Seed();
 
-            Board bord = new Board();
+            Board bord = new Board(_mazeCardDataService);
             Board = bord;
-            FreeMazeCard = bord.freeMazeCard;
+            FreeMazeCard = new MazeCard { Id=bord.freeMazeCard.Id, Name=bord.freeMazeCard.Name, Image=bord.freeMazeCard.Image, Position=bord.freeMazeCard.Position, Rotation=bord.freeMazeCard.Rotation };
+            //FreeMazeCard = bord.freeMazeCard;
 
 
             dialogService = new DialogService();
@@ -266,9 +265,12 @@ namespace DeBetoverdeDoolhof.ViewModel
             {
                 index++;
             }
-            currentCard.Image = currentSet[index].Image;
-            currentCard.Rotation = currentSet[index].Rotation;
-            FreeMazeCard = currentCard;
+            //currentCard.Image = currentSet[index].Image;
+            //currentCard.Rotation = currentSet[index].Rotation;
+            //FreeMazeCard = currentCard;
+            FreeMazeCard.Image = currentSet[index].Image;
+            FreeMazeCard.NotifyPropertyChanged();
+            //FreeMazeCard.Rotation = currentSet[index].Rotation;
         }
 
         public void AddPieceToBoard(Button button)
